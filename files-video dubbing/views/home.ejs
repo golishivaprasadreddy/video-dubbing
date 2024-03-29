@@ -1,0 +1,39 @@
+<% include ./partials/header.ejs %>
+    <div class="h-[100vh] w-[100vw] bg-green-400 flex flex-col justify-center items-center gap-3">
+        <div class="h-[10vh] w-[90%] relative bg-[#dadada] flex justify-center items-center font-bold ">
+            <form action="/upload" method="post" enctype="multipart/form-data" class="items-center">
+                <input type="file" hidden name="video" id="file">
+                <h1 id="upload" class="cursor-pointer text-3xl w-auto mx-auto h-full" >Upload a file</h1>
+                <input type="submit" value="convert" class="cursor-pointer hover:bg-red-500 p-3 bg-red-600 absolute right-[20px] top-[15px]" >
+            </form>
+        </div>
+
+        <div class="h-[80vh] w-[90%] flex justify-between items-center">
+            <div class="w-[45%] h-full bg-black">
+                <% if (post && post.video) { %>
+                    <video controls id="video" src="../images/uploads/<%= post.video %>" class="h-full w-full object-contain"></video>
+                <% } else { %>
+                    <!-- Default video source -->
+                    <video controls id="video" src="../public/images/uploads/98e6ed51-56e9-41f1-ae4c-ab472b100289.mp4" class="h-full w-full object-contain"></video>
+                <% } %>
+            </div>
+            <div class="uploadedVideo w-[45%] h-full bg-red-600"></div>
+        </div>
+        
+
+    </div>
+
+
+    <script>
+        const file = document.querySelector('#file');
+        const btn = document.querySelector('#upload');
+        btn.addEventListener('click', () => {
+            file.click();
+        })
+
+        
+        function uploaded (e) {
+            console.log(e);
+        }
+    </script>
+<% include ./partials/footer.ejs %>
