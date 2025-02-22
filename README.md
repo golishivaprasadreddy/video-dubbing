@@ -1,5 +1,3 @@
-
-
 # Video Dubbing
 
 The Video Dubbing project translates the audio in a given video to another language.
